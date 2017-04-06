@@ -2,4 +2,14 @@
     <string name="app_name">Security Awareness App</string>
     <string name="gameButtonTitle">Play a Game</string>
     <string name="learnButtonTitle">Learn ya Some</string>
+    <string name="chooseGameInstruction">Choose a Game To Play</string>
+    <string name="spamGameButtonTitle">Spam or Ham</string>
+    <string name="phishingGameButtonTitle">Phishing or Legit</string>
+    <string name="passwordGameButtonTitle">Password Strength</string>
+    <string name="learningResourcesInstruction">Here are some resources for improving your Information Security Awareness</string>
+    <string name="learningResourcesProtips">
+        General Protips: \n
+        Use secure passwords with as many different types of symbols as possible\n
+        Change your passwords often\n
+        Check the URL of any website before visiting it and especially before entering private information</string>
 </resources>
