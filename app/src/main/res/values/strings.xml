@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">InfoSecurityApp</string>
+    <string name="app_name">Security Awareness App</string>
+    <string name="gameButtonTitle">Play a Game</string>
+    <string name="learnButtonTitle">Learn ya Some</string>
 </resources>
