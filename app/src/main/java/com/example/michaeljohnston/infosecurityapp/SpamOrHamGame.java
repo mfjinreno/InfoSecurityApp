@@ -28,23 +28,29 @@ public class SpamOrHamGame extends AppCompatActivity {
         if (items.size()>0){
             items.clear();
         }
-
-        if (incorrectItems.size()>0){
-            incorrectItems.clear();
-        }
-
-        for(int i = 0; i<10; i++){
-            SpamHam s = new SpamHam();
-            if (i%2 ==0){
-                s.name = "SPAM" + i;
-                s.text = "I am spam number " +i;
-                s.isSpam = true;
-            }else {
-                s.name = "HAM" + i;
-                s.text = "I am ham number " +i;
-                s.isSpam = false;
+        System.out.println("size "+ ScorePageActivity.incorrectItems.size());
+        if (ScorePageActivity.incorrectItems.size()>0){
+            for (SpamHam s: ScorePageActivity.incorrectItems){
+                System.out.println("Incorrect "+ s.name);
+                items.add(s);
             }
-            items.add(s);
+            ScorePageActivity.incorrectItems.clear();
+        }else {
+
+            //this is where you initialize the new game's items, everything else handles the repeat case
+            for (int i = 0; i < 10; i++) {
+                SpamHam s = new SpamHam();
+                if (i % 2 == 0) {
+                    s.name = "SPAM" + i;
+                    s.text = "I am spam number " + i;
+                    s.isSpam = true;
+                } else {
+                    s.name = "HAM" + i;
+                    s.text = "I am ham number " + i;
+                    s.isSpam = false;
+                }
+                items.add(s);
+            }
         }
 
         for (SpamHam s : items){
@@ -72,7 +78,8 @@ public class SpamOrHamGame extends AppCompatActivity {
 
                 // (add that here)
 
-
+                Intent intent = new Intent(mContext, ScorePageActivity.class);
+                mContext.startActivity(intent);
                 //CONTINUE THE GAME
                 nextTurn();
 
@@ -146,6 +153,7 @@ public class SpamOrHamGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spam_or_ham_game);
         imgContainer = (LinearLayout) findViewById(R.id.linearLayout1);
+
         mContext = this;
         initGame();
     }
