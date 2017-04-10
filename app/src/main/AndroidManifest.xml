@@ -20,7 +20,8 @@
         <activity android:name=".SpamOrHamGame" />
         <activity android:name=".ScorePageActivity" />
         <activity android:name=".PhishingGameActivity" />
-        <activity android:name=".ScoreScreenPhishActivity"></activity>
+        <activity android:name=".ScoreScreenPhishActivity" />
+        <activity android:name=".PasswordStrengthActivity"></activity>
     </application>
 
 </manifest>

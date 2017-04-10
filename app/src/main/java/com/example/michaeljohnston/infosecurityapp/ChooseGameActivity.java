@@ -21,4 +21,9 @@ public class ChooseGameActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PhishingGameActivity.class);
         startActivity(intent);
     }
+
+    public void enterPasswordScreen(View view){
+        Intent intent = new Intent(this, PasswordStrengthActivity.class);
+        startActivity(intent);
+    }
 }
