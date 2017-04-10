@@ -30,6 +30,8 @@ public class SpamOrHamGame extends AppCompatActivity {
             items.clear();
         }
         System.out.println("size "+ ScorePageActivity.incorrectItems.size());
+
+        //handles cases where the game is in its repeat state
         if (incorrectItems.size()>0){
             for (SpamHam s: incorrectItems){
                 System.out.println("Incorrect "+ s.name);
@@ -38,6 +40,17 @@ public class SpamOrHamGame extends AppCompatActivity {
             incorrectItems.clear();
         }else {
             score = 0;
+
+            /**
+             * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+             * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+             * !!!!!!!!!!!!!!!!   ADD HERE  !!!!!!!!!!!!!!!!!!!!!
+             * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+             * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+             * EVERY ITEM WILL BE A SPAMHAM, I'M TOO LAZY TO MAKE A SEPARATE OBJECT CLASS FOR PHISH
+             * INITIALIZE OBJECTS CONTAINED IN THE QUIZ HERE AND ADD THEM TO items ARRAYLIST
+             * CURRENT DATA IS PLACEHOLDER ~ONLY~
+             */
             //this is where you initialize the new game's items, everything else handles the repeat case
             for (int i = 0; i < 10; i++) {
                 SpamHam s = new SpamHam();
@@ -121,6 +134,19 @@ public class SpamOrHamGame extends AppCompatActivity {
      *  !IMPORTANT-------------NEEDS UPDATE TO PUT IMAGE TO SCREEN
      */
     public static void putScreen(){
+
+        /**
+         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         * !!!!!!!!!!!!!!!!   ADD HERE  !!!!!!!!!!!!!!!!!!!!!
+         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         * Update both the view and this method to send an image item instead
+         */
+
+
+
+        //puts the text
         TextView text = (TextView) imgContainer.findViewById(R.id.list_header);
         text.setText( currentItem.text );
         imgContainer.removeAllViews();
@@ -166,10 +192,14 @@ public class SpamOrHamGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spam_or_ham_game);
         imgContainer = (LinearLayout) findViewById(R.id.linearLayout1);
+
+        //gets the incorrectItems list from score screen if needed
         Bundle bundle = getIntent().getExtras();
         if (bundle!=null) {
             incorrectItems = (ArrayList<SpamHam>) bundle.getSerializable("incorrectItemsSerializeable");
         }
+
+        //sets class Context for static method calls to startActivity and Intent init
         mContext = this;
         initGame();
     }
