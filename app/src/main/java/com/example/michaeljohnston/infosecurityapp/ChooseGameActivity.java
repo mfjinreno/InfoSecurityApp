@@ -17,4 +17,8 @@ public class ChooseGameActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SpamOrHamGame.class);
         startActivity(intent);
     }
+    public void enterPhishScreen(View view){
+        Intent intent = new Intent(this, PhishingGameActivity.class);
+        startActivity(intent);
+    }
 }

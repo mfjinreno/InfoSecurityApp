@@ -12,13 +12,12 @@ import android.widget.TextView;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ScorePageActivity extends AppCompatActivity {
+public class ScoreScreenPhishActivity extends AppCompatActivity {
     public static int score = 0;
-    public static LinearLayout  scoreContainer;
+    public static LinearLayout scoreContainer;
     public static Button button;
     private static Context mContext;
     public static ArrayList<SpamHam> incorrectItems = new ArrayList<SpamHam>();
-    public static String currentType = "";
 
 
     public static void putScreen(boolean isEmpty){
@@ -42,42 +41,26 @@ public class ScorePageActivity extends AppCompatActivity {
     }
 
     public static void continueClick(View v){
-        if (currentType.equals("spam")){
-            Intent intent = new Intent(mContext, SpamOrHamGame.class);
-            intent.putExtra("incorrectItemsSerializeable", (Serializable) incorrectItems);
-            mContext.startActivity(intent);
-        }else {
-            Intent intent = new Intent(mContext, PhishingGameActivity.class);
-            intent.putExtra("incorrectItemsSerializeable", (Serializable) incorrectItems);
-            mContext.startActivity(intent);
-        }
+        Intent intent = new Intent(mContext, SpamOrHamGame.class);
+        intent.putExtra("incorrectItemsSerializeable", (Serializable) incorrectItems);
 
-
-
+        mContext.startActivity(intent);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score_page);
-
+        setContentView(R.layout.activity_score_screen_phish);
+        score = SpamOrHamGame.score;
 
         Bundle bundle = getIntent().getExtras();
         incorrectItems= (ArrayList<SpamHam>) bundle.getSerializable("incorrectItemsSerializeable");
-        currentType = bundle.getString("type");
-
-        if (currentType.equals("spam")){
-            score = SpamOrHamGame.score;
-        }else{
-            score = PhishingGameActivity.score;
-        }
-
         boolean isEmpty = incorrectItems.isEmpty();
         System.out.println("Score"+ score);
         scoreContainer = (LinearLayout) findViewById(R.id.linearLayout1);
         button = (Button) findViewById(R.id.continueButton);
         mContext = this;
         putScreen(isEmpty);
-
     }
 }

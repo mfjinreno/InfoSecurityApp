@@ -18,7 +18,9 @@
         <activity android:name=".ChooseGameActivity" />
         <activity android:name=".LearningResourcesActivity" />
         <activity android:name=".SpamOrHamGame" />
-        <activity android:name=".ScorePageActivity"></activity>
+        <activity android:name=".ScorePageActivity" />
+        <activity android:name=".PhishingGameActivity" />
+        <activity android:name=".ScoreScreenPhishActivity"></activity>
     </application>
 
 </manifest>

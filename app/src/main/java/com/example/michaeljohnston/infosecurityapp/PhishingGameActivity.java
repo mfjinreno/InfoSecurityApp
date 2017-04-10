@@ -6,13 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SpamOrHamGame extends AppCompatActivity {
+public class PhishingGameActivity extends AppCompatActivity {
     public static LinearLayout imgContainer;
     public static ArrayList<SpamHam> items = new ArrayList<SpamHam>();
     public static ArrayList<SpamHam> incorrectItems = new ArrayList<SpamHam>();
@@ -42,12 +41,12 @@ public class SpamOrHamGame extends AppCompatActivity {
             for (int i = 0; i < 10; i++) {
                 SpamHam s = new SpamHam();
                 if (i % 2 == 0) {
-                    s.name = "SPAM" + i;
-                    s.text = "I am spam number " + i;
+                    s.name = "PHISH" + i;
+                    s.text = "I am phish number " + i;
                     s.isSpam = true;
                 } else {
-                    s.name = "HAM" + i;
-                    s.text = "I am ham number " + i;
+                    s.name = "NONPHISH" + i;
+                    s.text = "I am non-phish number " + i;
                     s.isSpam = false;
                 }
                 items.add(s);
@@ -70,7 +69,7 @@ public class SpamOrHamGame extends AppCompatActivity {
     public static void nextTurn(){
         if (items.size()==0){
             Intent intent = new Intent(mContext, ScorePageActivity.class);
-            intent.putExtra("type", "spam");
+            intent.putExtra("type", "phish");
             if (incorrectItems.size()>0){
 
 
@@ -79,7 +78,6 @@ public class SpamOrHamGame extends AppCompatActivity {
 
                 // (add that here)
                 System.out.println("end of round: next game starting");
-
 
                 //cast the arraylist of incorrect items to a serializeable type
                 intent.putExtra("incorrectItemsSerializeable", (Serializable) incorrectItems);
@@ -92,7 +90,6 @@ public class SpamOrHamGame extends AppCompatActivity {
             }else{
                 //TELL THEM THEIR SCORE/ANSWERS INCORRECT (in this case there will be no answers incorrect
 
-                // (add that here)
 
 
                 //cast the arraylist of incorrect items to a serializeable type
@@ -160,12 +157,11 @@ public class SpamOrHamGame extends AppCompatActivity {
         }
         nextTurn();
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spam_or_ham_game);
-        imgContainer = (LinearLayout) findViewById(R.id.linearLayout1);
+        setContentView(R.layout.activity_phishing_game);
+        imgContainer = (LinearLayout) findViewById(R.id.linearLayout2);
         Bundle bundle = getIntent().getExtras();
         if (bundle!=null) {
             incorrectItems = (ArrayList<SpamHam>) bundle.getSerializable("incorrectItemsSerializeable");
