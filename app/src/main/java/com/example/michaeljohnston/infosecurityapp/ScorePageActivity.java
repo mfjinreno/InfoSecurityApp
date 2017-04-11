@@ -17,7 +17,7 @@ public class ScorePageActivity extends AppCompatActivity {
     public static LinearLayout  scoreContainer;
     public static Button button;
     private static Context mContext;
-    public static ArrayList<SpamHam> incorrectItems = new ArrayList<SpamHam>();
+    public static ArrayList<SpamHam> incorrectItems = new ArrayList<>();
     public static String currentType = "";
 
 
@@ -29,8 +29,10 @@ public class ScorePageActivity extends AppCompatActivity {
             text.setText(scoreString);
 
         }else {
+            int missed = 10-score;
             String scoreString = String.valueOf(score);
-            text.setText(scoreString);
+            String numberWrong = "                      Score: " + scoreString;
+            text.setText(numberWrong + "                Looks like you missed " + missed + "! Let's try it again!");
         }
         scoreContainer.removeAllViews();
         scoreContainer.addView(text);
