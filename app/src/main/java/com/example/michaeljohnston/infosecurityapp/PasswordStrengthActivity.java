@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nulabinc.zxcvbn.Strength;
+import com.nulabinc.zxcvbn.Zxcvbn;
+
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class PasswordStrengthActivity extends AppCompatActivity {
@@ -27,6 +31,8 @@ public class PasswordStrengthActivity extends AppCompatActivity {
         BigInteger speed = new BigInteger("10000000000");
         int space = 24;
         BigInteger size = new BigInteger(String.valueOf(pass.length()));
+        Zxcvbn zxcvbn = new Zxcvbn();
+        Strength strength = zxcvbn.measure(pass);
 
         long length = (long) pass.length();
 
@@ -45,7 +51,8 @@ public class PasswordStrengthActivity extends AppCompatActivity {
 
         //divide that by the speed of the potential algorithm (iterations per second)
         time = size.divide(speed);
-        return time;
+        return new BigDecimal(strength.getCrackTimeSeconds().getOnlineNoThrottling10perSecond()).toBigInteger();
+        //return time;
     }
 
     public static void testPassword(View v){
