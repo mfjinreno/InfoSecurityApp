@@ -7,9 +7,19 @@
     <string name="phishingGameButtonTitle">Phishing or Legit</string>
     <string name="passwordGameButtonTitle">Password Strength</string>
     <string name="learningResourcesInstruction">Here are some resources for improving your Information Security Awareness</string>
-    <string name="learningResourcesProtips">
-        General Protips: \n
+    <string name="learningResourcesProtips">General Protips:\n
         Use secure passwords with as many different types of symbols as possible\n
         Change your passwords often\n
-        Check the URL of any website before visiting it and especially before entering private information</string>
+        Check the URL of any website before visiting it and especially before entering private information\n</string>
+    <string name="learningResourcesSpamLinks">Spam Resources:\n
+        http://searchsecurity.techtarget.com/tip/Creating-an-antispam-cocktail-Best-spam-detection-and-filtering-techniques \n
+        https://en.wikipedia.org/wiki/Anti-spam_techniques \n
+    </string>
+    <string name="learningResourcesPhishingLinks">Phishing Resources:\n
+        http://www.pandasecurity.com/mediacenter/security/10-tips-prevent-phishing-attacks/ \n
+    </string>
+    <string name="learningResourcesPasswordLinks">Password Strength Resources:\n
+        https://www.us-cert.gov/ncas/tips/ST04-002 \n
+        https://www.howtogeek.com/195430/how-to-create-a-strong-password-and-remember-it/ \n
+    </string>
 </resources>
