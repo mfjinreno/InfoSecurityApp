@@ -39,8 +39,8 @@ public class ScorePageActivity extends AppCompatActivity {
         }else {
             int missed = 10-score;
             String scoreString = String.valueOf(score);
-            String numberWrong = "                      Score: " + scoreString;
-            text.setText(numberWrong + "                Looks like you missed " + missed + "! Let's try it again!");
+            String numberWrong = "Score: " + scoreString;
+            text.setText(numberWrong + "\n Looks like you missed " + missed + "! Let's try it again!");
         }
         scoreContainer.removeAllViews();
         scoreContainer.addView(text);
