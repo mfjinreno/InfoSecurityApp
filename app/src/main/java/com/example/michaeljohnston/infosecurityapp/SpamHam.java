@@ -10,4 +10,6 @@ public class SpamHam implements java.io.Serializable {
     public String text = "";
 
     public String name = "";
+
+    public Integer imgID = 0;
 }

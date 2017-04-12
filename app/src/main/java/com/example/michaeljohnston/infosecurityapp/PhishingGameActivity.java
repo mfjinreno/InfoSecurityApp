@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class PhishingGameActivity extends AppCompatActivity {
     public static LinearLayout imgContainer;
@@ -47,15 +49,22 @@ public class PhishingGameActivity extends AppCompatActivity {
              * INITIALIZE OBJECTS CONTAINED IN THE QUIZ HERE AND ADD THEM TO items ARRAYLIST
              * CURRENT DATA IS PLACEHOLDER ~ONLY~
              */
+            Integer legit[] = {R.mipmap.legit1, R.mipmap.legit2, R.mipmap.legit3, R.mipmap.legit4, R.mipmap.legit5, R.mipmap.legit6, R.mipmap.legit7, R.mipmap.legit8, R.mipmap.legit9, R.mipmap.legit10, R.mipmap.legit11, R.mipmap.legit12, R.mipmap.legit13, R.mipmap.legit14, R.mipmap.legit15, R.mipmap.legit16, R.mipmap.legit17, R.mipmap.legit18, R.mipmap.legit19, R.mipmap.legit20, R.mipmap.legit21};
+            Integer phish[] = {R.mipmap.screenshot21, R.mipmap.screenshot22, R.mipmap.screenshot23, R.mipmap.screenshot24, R.mipmap.screenshot25, R.mipmap.screenshot26, R.mipmap.screenshot27, R.mipmap.screenshot28, R.mipmap.screenshot29, R.mipmap.screenshot30, R.mipmap.screenshot31, R.mipmap.screenshot32, R.mipmap.screenshot33, R.mipmap.screenshot34, R.mipmap.screenshot35, R.mipmap.screenshot36, R.mipmap.screenshot37, R.mipmap.screenshot38, R.mipmap.screenshot39, R.mipmap.screenshot40, R.mipmap.screenshot41, R.mipmap.screenshot42, R.mipmap.screenshot1, R.mipmap.screenshot2, R.mipmap.screenshot3, R.mipmap.screenshot4, R.mipmap.screenshot5, R.mipmap.screenshot6, R.mipmap.screenshot7, R.mipmap.screenshot8, R.mipmap.screenshot9, R.mipmap.screenshot10, R.mipmap.screenshot12, R.mipmap.screenshot13, R.mipmap.screenshot14, R.mipmap.screenshot15, R.mipmap.screenshot16, R.mipmap.screenshot17, R.mipmap.screenshot18, R.mipmap.screenshot19, R.mipmap.screenshot20, R.mipmap.spam1, R.mipmap.spam2, R.mipmap.spam3, R.mipmap.spam4, R.mipmap.spam5, R.mipmap.spam6, R.mipmap.spam7};
+
+            Random index = new Random();
+
             for (int i = 0; i < 10; i++) {
                 SpamHam s = new SpamHam();
                 if (i % 2 == 0) {
                     s.name = "PHISH" + i;
                     s.text = "I am phish number " + i;
+                    s.imgID = index.nextInt(phish.length);
                     s.isSpam = true;
                 } else {
                     s.name = "NONPHISH" + i;
                     s.text = "I am non-phish number " + i;
+                    s.imgID = index.nextInt(legit.length);
                     s.isSpam = false;
                 }
                 items.add(s);
@@ -134,11 +143,19 @@ public class PhishingGameActivity extends AppCompatActivity {
          */
 
 
-        //updates text
-        TextView text = (TextView) imgContainer.findViewById(R.id.list_header);
-        text.setText( currentItem.text );
+        Integer legit[] = {R.mipmap.legit1, R.mipmap.legit2, R.mipmap.legit3, R.mipmap.legit4, R.mipmap.legit5, R.mipmap.legit6, R.mipmap.legit7, R.mipmap.legit8, R.mipmap.legit9, R.mipmap.legit10, R.mipmap.legit11, R.mipmap.legit12, R.mipmap.legit13, R.mipmap.legit14, R.mipmap.legit15, R.mipmap.legit16, R.mipmap.legit17, R.mipmap.legit18, R.mipmap.legit19, R.mipmap.legit20, R.mipmap.legit21};
+        Integer phish[] = {R.mipmap.screenshot21, R.mipmap.screenshot22, R.mipmap.screenshot23, R.mipmap.screenshot24, R.mipmap.screenshot25, R.mipmap.screenshot26, R.mipmap.screenshot27, R.mipmap.screenshot28, R.mipmap.screenshot29, R.mipmap.screenshot30, R.mipmap.screenshot31, R.mipmap.screenshot32, R.mipmap.screenshot33, R.mipmap.screenshot34, R.mipmap.screenshot35, R.mipmap.screenshot36, R.mipmap.screenshot37, R.mipmap.screenshot38, R.mipmap.screenshot39, R.mipmap.screenshot40, R.mipmap.screenshot41, R.mipmap.screenshot42, R.mipmap.screenshot1, R.mipmap.screenshot2, R.mipmap.screenshot3, R.mipmap.screenshot4, R.mipmap.screenshot5, R.mipmap.screenshot6, R.mipmap.screenshot7, R.mipmap.screenshot8, R.mipmap.screenshot9, R.mipmap.screenshot10, R.mipmap.screenshot12, R.mipmap.screenshot13, R.mipmap.screenshot14, R.mipmap.screenshot15, R.mipmap.screenshot16, R.mipmap.screenshot17, R.mipmap.screenshot18, R.mipmap.screenshot19, R.mipmap.screenshot20, R.mipmap.spam1, R.mipmap.spam2, R.mipmap.spam3, R.mipmap.spam4, R.mipmap.spam5, R.mipmap.spam6, R.mipmap.spam7};
+
+        ImageView img = (ImageView) imgContainer.findViewById(R.id.imageView2);
+        //puts the text
+        if (currentItem.isSpam){
+            img.setImageResource( phish[currentItem.imgID] );
+        } else {
+            img.setImageResource( legit[currentItem.imgID] );
+        }
+
         imgContainer.removeAllViews();
-        imgContainer.addView(text);
+        imgContainer.addView(img);
     }
 
     /**
