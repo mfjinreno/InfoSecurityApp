@@ -24,7 +24,15 @@ public class ScorePageActivity extends AppCompatActivity {
     public static void putScreen(boolean isEmpty){
         TextView text = (TextView) scoreContainer.findViewById(R.id.list_header_continue);
         if (isEmpty){
-            button.setVisibility(View.INVISIBLE);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    enterLearnScreen(v);
+                }
+            });
+            button.setText("Learn");
+            //button.setVisibility(View.INVISIBLE);
+
             String scoreString = String.valueOf("You got everything correct, Congrats!");
             text.setText(scoreString);
 
@@ -53,11 +61,11 @@ public class ScorePageActivity extends AppCompatActivity {
             intent.putExtra("incorrectItemsSerializeable", (Serializable) incorrectItems);
             mContext.startActivity(intent);
         }
-
-
-
     }
-
+    public static void enterLearnScreen(View view){
+        Intent intent = new Intent(mContext, LearningResourcesActivity.class);
+        mContext.startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
