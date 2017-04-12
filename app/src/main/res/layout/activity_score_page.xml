@@ -27,14 +27,15 @@
             android:id="@+id/list_header_continue"
             android:layout_width="361dp"
             android:layout_height="341dp"
-            android:gravity="center_vertical"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:textStyle="bold"
             android:textSize="22dp"
-            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="#22313F"
             android:padding="10dp"
-            android:background="#336699"
+
 
             />
     </LinearLayout>
